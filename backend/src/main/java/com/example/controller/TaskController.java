@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.dto.request.TaskRequest;
 import com.example.dto.request.TaskStatusUpdateRequest;
+import com.example.dto.request.TaskTitleUpdateRequest;
 import com.example.dto.response.TaskResponse;
 import com.example.entity.TaskStatus;
 import com.example.service.TaskService;
@@ -60,6 +61,13 @@ public class TaskController {
         return service.updateStatus(id, updateRequest.status());
     }
 
+
+    @PutMapping("title/{id}")
+    public TaskResponse updateTitle(
+            @PathVariable Long id,
+            @Valid @RequestBody TaskTitleUpdateRequest updateRequest){
+        return service.updateTitle(id, updateRequest.title());
+    }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
