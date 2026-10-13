@@ -8,7 +8,7 @@ public record TaskRequest (
         @Size(max = 100, message = "Max 100 chars allowed")
         String title,
 
-        @Size(max = 500)
+        @Size(max = 700)
         String description
 ) {
 }
