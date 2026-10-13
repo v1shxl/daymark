@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.dto.request.TaskRequest;
+import com.example.dto.request.TaskDescriptionUpdateRequest;
 import com.example.dto.request.TaskStatusUpdateRequest;
 import com.example.dto.request.TaskTitleUpdateRequest;
 import com.example.dto.response.TaskResponse;
@@ -67,6 +68,12 @@ public class TaskController {
             @PathVariable Long id,
             @Valid @RequestBody TaskTitleUpdateRequest updateRequest){
         return service.updateTitle(id, updateRequest.title());
+    }
+
+    @PutMapping("description/{id}")
+    public TaskResponse updateDescription(@PathVariable Long id,
+            @Valid @RequestBody TaskDescriptionUpdateRequest request) {
+        return service.updateDescription(id, request.description());
     }
 
     @DeleteMapping("/{id}")

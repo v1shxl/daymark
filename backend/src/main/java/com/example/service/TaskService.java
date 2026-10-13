@@ -66,6 +66,13 @@ public class TaskService {
     }
 
     @Transactional
+    public TaskResponse updateDescription(long id, String description) {
+        Task task = repository.findById(id).orElseThrow(() -> new TaskNotFoundException(id));
+        task.setDescription(description);
+        return TaskResponse.from(task);
+    }
+
+    @Transactional
     public void delete(long id){
         if(!repository.existsById(id)) throw new TaskNotFoundException(id);
         repository.deleteById(id);
